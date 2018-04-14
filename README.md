@@ -24,6 +24,8 @@ The data is comprised of a series of absorbance values from 400-2,500nm through 
 
 The simulated data was generated according to a variation on Agent-based modelling (ABM) that is commonly used in ecology, referred to as invidivual-based modelling (IBM). In particular, using a modified game theoretical model, the parameter of resource division was used to simulate the evolution of an algae population in a lake according to individual behavior. The data obtained was used to make predictions about how an enviroment may change with respect to Chlorophyll a, given certain environmental conditions and an initial measure of Chlorophyll a.
 
+Classification of data from Lac-des-Iles and Stoco Lake was performed based on absorbance values within a biologically relevant absorbance range (400-800nm) using a support vector machine (SVM). SVM identifies an optimal mapping between observations and datapoints (sediment ages and absorbance values, respectively), and a class (lake identity, inputted as a signed +/-1 integer value). The Python Scikit-Learn 0.19.0 implementation of SVM was employed for these analyses, fitting data using a built-in sigmoid kernel function. Models were iteratively built one variable (dated series of absorbances) at a time to identify the variables that contribute most to difference between lakes (i.e. greatest classification accuracy on a test set of absorbance values external to the training set). The identification of key sediment ages could be used to identify a point at which the lakes' absorbance values become separable (or, going back in time, become indistinguishable). This has implications for both tracking changes in absorbance values over time, and predicting lake health based on a large sample of data. 
+
 #### Data Included in this Repository:
 * Dating profiles for each sediment core, which was generated using a constant rate of 210-Pb supply model via ScienTissiME
 * Full spectrum absorbance values for four lakes
@@ -37,7 +39,7 @@ The simulated data was generated according to a variation on Agent-based modelli
 * Chlorophyll a plot codes (using ggplot2 in R)
 * Full wavelength range codes, with plot options for raw data, density, and raster images (using ggplot2 in R)
 * Code to generate map of sediment cores
-* [LEIF'S INFO HERE]
+* Classification: Support vector machines (SVM) model building script that uses the Scikit-Learn (0.19.0) implementation of SVM.
 * Simulation: Python code for game theoretical mathematical model. 
 
 ### References
